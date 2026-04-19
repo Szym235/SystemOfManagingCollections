@@ -31,6 +31,7 @@ namespace SystemOfManagingCollections.Models
         public ItemModel(string name)
         {
             this.name = name;
+            this.ownerRating = 1;
         }
         public ItemModel(string name, string description, string imagePath, string price, string status, int ownerRating, string comment, string dimensions)
         {

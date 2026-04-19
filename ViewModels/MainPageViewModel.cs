@@ -43,9 +43,9 @@ namespace SystemOfManagingCollections.ViewModels
         [RelayCommand]
         public void AddItemCollection()
         {
-            if(NewItemCollectionName.Replace(" ", "") == string.Empty)
+            if(NewItemCollectionName.Replace(" ", "") == string.Empty || AllItemCollections.findCollectionByName(NewItemCollectionName) != null)
             {
-                Application.Current.MainPage.DisplayAlert("Błąd", "Nazwa kolekcji nie może być pusta", "Ok");
+                Application.Current.MainPage.DisplayAlert("Błąd", "Nazwa kolekcji nie może być pusta, ani się powtarzać", "Ok");
                 return;
             }
             ItemCollectionModel newItemCollection = new ItemCollectionModel(NewItemCollectionName);

@@ -5,30 +5,31 @@
              xmlns:viewModels="clr-namespace:SystemOfManagingCollections.ViewModels"
              xmlns:views="clr-namespace:SystemOfManagingCollections.ViewPartials"
              x:DataType="viewModels:MainPageViewModel">
-
-    <VerticalStackLayout>
-        <HorizontalStackLayout>
-            <Button 
-                Text="Importuj" 
-                VerticalOptions="Center" 
-                Command="{Binding ImportItemCollectionCommand}"/>
-            <Entry Placeholder="Nazwa nowej kolekcji"
-                   Text="{Binding NewItemCollectionName}"/>
-            <Button Text="Dodaj" 
-                    VerticalOptions="Center"
-                    Command="{Binding AddItemCollectionCommand}"/>
-        </HorizontalStackLayout>
-        <ListView ItemsSource="{Binding AllItemCollections.ItemCollections}"
-                  VerticalOptions="Fill"
-                  StyleClass="collectionsList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <views:CollectionViewSimple />
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+            <HorizontalStackLayout>
+                <Button 
+                    Text="Importuj" 
+                    VerticalOptions="Center" 
+                    Command="{Binding ImportItemCollectionCommand}"/>
+                <Entry Placeholder="Nazwa nowej kolekcji"
+                       Text="{Binding NewItemCollectionName}"/>
+                <Button Text="Dodaj" 
+                        VerticalOptions="Center"
+                        Command="{Binding AddItemCollectionCommand}"/>
+            </HorizontalStackLayout>
+            <ListView ItemsSource="{Binding AllItemCollections.ItemCollections}"
+                      VerticalOptions="Fill"
+                      StyleClass="collectionsList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <views:CollectionViewSimple />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>
