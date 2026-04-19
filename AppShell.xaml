@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SystemOfManagingCollections.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SystemOfManagingCollections"
+    xmlns:views="clr-namespace:SystemOfManagingCollections.Views"
+    StyleClass="appShell"
+    Title="SystemOfManagingCollections">
+
+    <ShellContent
+        Title="Strona główna"
+        ContentTemplate="{DataTemplate views:MainPage}"
+        Route="MainPage" />
+
+</Shell>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOfManagingCollections.ViewPartials.CollectionViewSimple"
+             xmlns:model="clr-namespace:SystemOfManagingCollections.Models"
+             x:DataType="model:ItemCollectionModel">
+    <HorizontalStackLayout >
+        <Label 
+            Text="{Binding Name}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer 
+                Command="{Binding BindingContext.OpenItemCollectionPageCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                CommandParameter="{Binding .}"/>
+            </Label.GestureRecognizers>
+        </Label>
+        <Button 
+                Text="Eksportuj" 
+                VerticalOptions="Center" 
+                Command="{Binding BindingContext.ExportItemCollectionCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                CommandParameter="{Binding .}"/>
+        <Button 
+                Text="Usuń" 
+                VerticalOptions="Center" 
+                Command="{Binding BindingContext.DeleteItemCollectionCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                CommandParameter="{Binding .}"/>
+    </HorizontalStackLayout>
+</ContentView>
