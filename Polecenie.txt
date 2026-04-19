@@ -1,0 +1,24 @@
+﻿Celem zadania jest przygotowanie aplikacji w .NET MAUI "System zarządzania kolekcjonerstwem"
+Opis aplikacji: Aplikacja do zarządzania różnymi rodzajami kolekcji (książki, gry na konsole, gry planszowe, zestawy lego, karty TCG, płyty z muzyką, itp.)
++ Na głównej stronie aplikacji powinien być dostęp do wszystkich kolekcji które posiada użytkownik oraz możliwość dodania nowej kolekcji. Po wejściu w kolekcje
++ mamy zobaczyć wylistowane lub stabelaryzowane informacje na temat posiadanej
++ kolekcji. Ma także być możliwość jej edycji (dodawanie elementów, usuwanie oraz modyfikacja) 
+
+Wymagania na ocenę dopuszczającą:
++ realizacja zapisu informacji podawanych przez użytkownika w plikach tekstowych (.txt) jak również automatyczne wczytanie informacji o kolekcjach przy starcie aplikacji
++ brak wykorzystania bibliotek do obsługi zapisu danych takich jak json, xml, csv, itp. Cały zapisy oraz format danych powinien być realizowany samodzielnie
++ możliwość edycji konkretnego elementu z kolekcji (nie całej listy naraz)
++ w debugu powinna wyświetlić się ścieżka do danych aplikacji
++ Projekt umieszczony na GITHUB z linkiem wysłanym na forms: 
++ Projekt ma być podzielony minimum na widoki i modele
+Wymagania na wyższe oceny
+(2 wymagania - ocena 3, 4-4, 6-5, 8-6):
+1. Ostylowanie w dowolny sposób aplikacji tak aby była przejrzysta i zgodna z teorią barw. Można skorzystać z np. Adobe Colors (nie monochromatyczna)
++ Prezentowanie w widoku kolekcji innych danych poza nazwami (np. ceny przedmiotu, statusu - nowy, użyty, na sprzedaż, sprzedany, chcę kupić, itp., oceny w skali 1-10 jak bardzo posiadacz jest z tego zadowolony, komentarz), 
+minimum 2 inne informacje
+//3. Możliwość dodania swojej kolumny z danymi do kolekcji zgodnie z życzeniem użytkownika. Może być to dana tekstowa, liczbowa lub zestaw wartości do wyboru - Użytkownik wybiera. 
++ Wyszarzenie i przeniesienie na koniec kolekcji elementów sprzedanych
++ Możliwość dodania grafiki dla przedmiotu 
++ Upewnienie się czy użytkownik chce podać 2 raz taki sam element
++ Możliwość exportu danych i importu danych o jednej kolekcji bez stratnie poprzez łączenie tego co już jest z danymi, które otrzymuje program
+8. Możliwość generowa	nia ekranu z podsumowaniem dla danej kolekcji z ilością posiadanych przedmiotów, ilością przedmiotów sprzedanych i tych które chce sprzedać

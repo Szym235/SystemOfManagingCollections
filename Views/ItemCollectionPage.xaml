@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOfManagingCollections.Views.ItemCollectionPage"
+             xmlns:viewModels="clr-namespace:SystemOfManagingCollections.ViewModels"
+             xmlns:models="clr-namespace:SystemOfManagingCollections.Models"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewModels:ItemCollectionPageViewModel"
+             Title="{Binding ItemCollection.Name}">
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Entry Placeholder="Nazwa nowego przedmiotu"
+                   Text="{Binding NewItemName}"/>
+            <Button 
+                Text="Dodaj" 
+                VerticalOptions="Center"
+                Command="{Binding AddItemCommand}"/>
+        </HorizontalStackLayout>
+        <ScrollView Orientation="Both">
+            <VerticalStackLayout>
+                <Grid ColumnDefinitions="*, *, *, *, *, *, *, *, 150, 100">
+                    <Label Text="Nazwa" HorizontalOptions="Center" Grid.Column="0"/>
+                    <Label Text="Opis" HorizontalOptions="Center" Grid.Column="1"/>
+                    <Label Text="Obrazek" HorizontalOptions="Center" Grid.Column="2"/>
+                    <Label Text="Cena" HorizontalOptions="Center" Grid.Column="3"/>
+                    <Label Text="Status" HorizontalOptions="Center" Grid.Column="4"/>
+                    <Label Text="Ocena" HorizontalOptions="Center" Grid.Column="5"/>
+                    <Label Text="Komentarz" HorizontalOptions="Center" Grid.Column="6"/>
+                    <Label Text="Wymiary" HorizontalOptions="Center" Grid.Column="7"/>
+                </Grid>
+                <CollectionView ItemsSource="{Binding ItemCollection.Items}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ItemModel">
+                            <Grid ColumnDefinitions="*, *, *, *, *, *, *, *, 150, 100" StyleClass="itemsGrid">
+                                <Grid.Triggers>
+                                    <DataTrigger TargetType="Grid" Binding="{Binding Status}" Value="Sprzedane">
+                                        <Setter Property="Opacity" Value="0.5"/>
+                                    </DataTrigger>
+                                </Grid.Triggers>
+                                <Label StyleClass="itemName" VerticalOptions="Center" Text="{Binding Name}" Grid.Column="0"/>
+                                <Entry Text="{Binding Description}" Grid.Column="1" />
+                                <Image Source="{Binding ImagePath}" Grid.Column="2"/>
+                                <Entry Text="{Binding Price}" Grid.Column="3"/>
+                                <Picker SelectedItem="{Binding Status}"
+                                Grid.Column="4">
+                                    <Picker.Items>
+                                        <x:String>Nowe</x:String>
+                                        <x:String>Używane</x:String>
+                                        <x:String>Na sprzedaż</x:String>
+                                        <x:String>Sprzedane</x:String>
+                                        <x:String>Chcę kupić</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                                <VerticalStackLayout Grid.Column="5">
+                                    <Label Text="Rating" HorizontalOptions="Center"/>
+                                    <Slider Minimum="1" HorizontalOptions="Center" Maximum="10" Value="{Binding OwnerRating}" />
+                                    <Label Text="{Binding OwnerRating}" HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                                <Entry Text="{Binding Comment}" Grid.Column="6"/>
+                                <Entry Text="{Binding Dimensions}" Grid.Column="7"/>
+                                <Button Text="Dodaj obrazek"
+                                Grid.Column="8"
+                                Command="{Binding BindingContext.SetImageCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{Binding .}"/>
+                                <Button Text="Usuń"
+                                Grid.Column="9"
+                                Command="{Binding BindingContext.DeleteItemCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                CommandParameter="{Binding .}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

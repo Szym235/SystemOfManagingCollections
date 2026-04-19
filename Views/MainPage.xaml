@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOfManagingCollections.Views.MainPage"
+             xmlns:viewModels="clr-namespace:SystemOfManagingCollections.ViewModels"
+             xmlns:views="clr-namespace:SystemOfManagingCollections.ViewPartials"
+             x:DataType="viewModels:MainPageViewModel">
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Button 
+                Text="Importuj" 
+                VerticalOptions="Center" 
+                Command="{Binding ImportItemCollectionCommand}"/>
+            <Entry Placeholder="Nazwa nowej kolekcji"
+                   Text="{Binding NewItemCollectionName}"/>
+            <Button Text="Dodaj" 
+                    VerticalOptions="Center"
+                    Command="{Binding AddItemCollectionCommand}"/>
+        </HorizontalStackLayout>
+        <ListView ItemsSource="{Binding AllItemCollections.ItemCollections}"
+                  VerticalOptions="Fill"
+                  StyleClass="collectionsList">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <views:CollectionViewSimple />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+
+</ContentPage>
