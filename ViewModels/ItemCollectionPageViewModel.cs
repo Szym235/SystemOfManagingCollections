@@ -18,7 +18,7 @@ namespace SystemOfManagingCollections.ViewModels
         [ObservableProperty]
         ItemCollectionModel itemCollection;
         [ObservableProperty]
-        string newItemName;
+        string newItemName = string.Empty;
 
         public ItemCollectionPageViewModel()
         {

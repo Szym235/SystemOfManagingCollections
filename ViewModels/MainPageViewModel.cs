@@ -23,7 +23,7 @@ namespace SystemOfManagingCollections.ViewModels
         [ObservableProperty]
         public AllItemCollectionsModel allItemCollections;
         [ObservableProperty]
-        public string newItemCollectionName;
+        public string newItemCollectionName = string.Empty;
         public MainPageViewModel()
         {
             allItemCollections = AllItemCollectionsModel.Instance;
