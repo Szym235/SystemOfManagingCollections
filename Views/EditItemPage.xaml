@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SystemOfManagingCollections.Views.EditItemPage"
+             xmlns:model="clr-namespace:SystemOfManagingCollections.Models"
+             xmlns:viewModels="clr-namespace:SystemOfManagingCollections.ViewModels"
+             x:DataType="viewModels:EditItemPageViewModel"
+             Title="{Binding Item.Name}">
+    <ScrollView Orientation="Horizontal">
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="*, *, *, *, *, *, *, 150">
+                <Label Text="Opis" HorizontalOptions="Center" Grid.Column="0"/>
+                <Label Text="Obrazek" HorizontalOptions="Center" Grid.Column="1"/>
+                <Label Text="Cena" HorizontalOptions="Center" Grid.Column="2"/>
+                <Label Text="Status" HorizontalOptions="Center" Grid.Column="3"/>
+                <Label Text="Ocena" HorizontalOptions="Center" Grid.Column="4"/>
+                <Label Text="Komentarz" HorizontalOptions="Center" Grid.Column="5"/>
+                <Label Text="Wymiary" HorizontalOptions="Center" Grid.Column="6"/>
+            </Grid>
+            <Grid ColumnDefinitions="*, *, *, *, *, *, *, 150" StyleClass="itemsGrid">
+                <Entry Text="{Binding Item.Description}" Grid.Column="0" />
+                <Image Source="{Binding Item.ImagePath}" Grid.Column="1"/>
+                <Entry Text="{Binding Item.Price}" Grid.Column="2"/>
+                <Picker SelectedItem="{Binding Item.Status}"
+                                Grid.Column="3">
+                    <Picker.Items>
+                        <x:String>Nowe</x:String>
+                        <x:String>Używane</x:String>
+                        <x:String>Na sprzedaż</x:String>
+                        <x:String>Sprzedane</x:String>
+                        <x:String>Chcę kupić</x:String>
+                    </Picker.Items>
+                </Picker>
+                <VerticalStackLayout Grid.Column="4">
+                    <Slider Minimum="1" HorizontalOptions="Center" Maximum="10" Value="{Binding Item.OwnerRating}" />
+                    <Label Text="{Binding Item.OwnerRating}" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Entry Text="{Binding Item.Comment}" Grid.Column="5"/>
+                <Entry Text="{Binding Item.Dimensions}" Grid.Column="6"/>
+                <Button Text="Dodaj obrazek"
+                Grid.Column="7"
+                Command="{Binding BindingContext.SetImageCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

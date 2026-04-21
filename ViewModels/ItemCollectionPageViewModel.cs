@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SystemOfManagingCollections.Models;
 using SystemOfManagingCollections.Services;
+using SystemOfManagingCollections.Views;
 
 namespace SystemOfManagingCollections.ViewModels
 {
@@ -18,7 +19,7 @@ namespace SystemOfManagingCollections.ViewModels
         [ObservableProperty]
         ItemCollectionModel itemCollection;
         [ObservableProperty]
-        string newItemName;
+        string newItemName = string.Empty;
 
         public ItemCollectionPageViewModel()
         {
@@ -52,18 +53,13 @@ namespace SystemOfManagingCollections.ViewModels
         }
 
         [RelayCommand]
-        public async void SetImage(ItemModel item)
+        public async Task OpenEditItemPage(ItemModel item)
         {
-            FileResult result = await FilePicker.Default.PickAsync();
-            if (result == null) return;
-            string extension = Path.GetExtension(result.FullPath);
-            if (extension != ".png" && extension != ".jpg")
+            Debug.WriteLine("Odpalam item");
+            await Shell.Current.GoToAsync(nameof(EditItemPage), new Dictionary<string, object>
             {
-                await Application.Current.MainPage.DisplayAlert("Błąd", "Plik musi być w formacie .png lub .jpg", "Ok");
-                return;
-            }
-
-            item.ImagePath = result.FullPath;
+                ["item"] = item
+            });
         }
     }
 }

@@ -8,6 +8,7 @@ namespace SystemOfManagingCollections
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemCollectionPage), typeof(ItemCollectionPage));
+            Routing.RegisterRoute(nameof(EditItemPage), typeof(EditItemPage));
         }
     }
 }
