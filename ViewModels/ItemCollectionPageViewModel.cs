@@ -55,6 +55,7 @@ namespace SystemOfManagingCollections.ViewModels
         public async void SetImage(ItemModel item)
         {
             FileResult result = await FilePicker.Default.PickAsync();
+            if (result == null) return;
             string extension = Path.GetExtension(result.FullPath);
             if (extension != ".png" && extension != ".jpg")
             {
